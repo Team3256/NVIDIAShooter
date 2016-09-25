@@ -26,32 +26,7 @@ Servo leftMotor2;
 Servo rightMotor1;
 Servo rightMotor2;
 NodeHandle nh;
-#ifdef TEST
-  void spike_callback(const std_msgs::UInt16& msg){
-  int a = msg.data;
-  if (a==1){
-      digitalWrite(13,HIGH);
-      digitalWrite(spike1_pin1, HIGH);
-      digitalWrite(spike1_pin2, LOW);
-      delay(30);
-    }
-    digitalWrite(13,HIGH);
-    digitalWrite(spike1_pin1, LOW);
-    digitalWrite(spike1_pin2, LOW);
-}
-Subscriber<std_msgs::UInt16> spike_sub("shoot", &spike_callback);
-#endif TEST
 int A,B;
-#ifdef tank
-void tankDrive(int left, int right){
-  int leftSpeed = 1500 + (5*left);
-  int rightSpeed = 1500 + (-5*right);
-  leftMotor1.writeMicroseconds(leftSpeed);
-  leftMotor2.writeMicroseconds(leftSpeed);
-  rightMotor1.writeMicroseconds(rightSpeed);
-  rightMotor2.writeMicroseconds(rightSpeed);
-}
-#endif tank
 void runLMotor(int left){
   int leftSpeed = 1500 + (5*left);
   leftMotor1.writeMicroseconds(leftSpeed);
@@ -62,23 +37,6 @@ void runRMotor(int right){
   rightMotor1.writeMicroseconds(rightSpeed);
   rightMotor2.writeMicroseconds(rightSpeed);
 }
-#ifdef oldshoot
-void shoot(boolean left, boolean right, int wait){
-  if (left){
-    digitalWrite(spike1_pin1, HIGH);
-    digitalWrite(spike1_pin2, LOW); 
-  }
-  if(right){
-    digitalWrite(spike2_pin1, HIGH);
-    digitalWrite(spike2_pin2, LOW);
-  }
-  delay(wait);
-  digitalWrite(spike1_pin1, LOW);
-  digitalWrite(spike1_pin2, LOW); 
-  digitalWrite(spike2_pin1, LOW);
-  digitalWrite(spike2_pin2, LOW); 
-}
-#endif oldshoot
 void shootL(boolean left, int wait){
  if (left){
    digitalWrite(spike1_pin1, HIGH);
