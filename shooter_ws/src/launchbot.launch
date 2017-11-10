@@ -1,6 +1,0 @@
-<launch>
-	<node name="joy" pkg=" >
-	<node >
-	<node >
-	<node >
-<launch>

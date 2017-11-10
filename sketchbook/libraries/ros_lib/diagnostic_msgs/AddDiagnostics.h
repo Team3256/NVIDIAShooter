@@ -13,23 +13,30 @@ static const char ADDDIAGNOSTICS[] = "diagnostic_msgs/AddDiagnostics";
   class AddDiagnosticsRequest : public ros::Msg
   {
     public:
-      char * load_namespace;
+      typedef const char* _load_namespace_type;
+      _load_namespace_type load_namespace;
+
+    AddDiagnosticsRequest():
+      load_namespace("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_load_namespace = (uint32_t *)(outbuffer + offset);
-      *length_load_namespace = strlen( (const char*) this->load_namespace);
+      uint32_t length_load_namespace = strlen(this->load_namespace);
+      varToArr(outbuffer + offset, length_load_namespace);
       offset += 4;
-      memcpy(outbuffer + offset, this->load_namespace, *length_load_namespace);
-      offset += *length_load_namespace;
+      memcpy(outbuffer + offset, this->load_namespace, length_load_namespace);
+      offset += length_load_namespace;
       return offset;
     }
 
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_load_namespace = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_load_namespace;
+      arrToVar(length_load_namespace, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_load_namespace; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -48,8 +55,16 @@ static const char ADDDIAGNOSTICS[] = "diagnostic_msgs/AddDiagnostics";
   class AddDiagnosticsResponse : public ros::Msg
   {
     public:
-      bool success;
-      char * message;
+      typedef bool _success_type;
+      _success_type success;
+      typedef const char* _message_type;
+      _message_type message;
+
+    AddDiagnosticsResponse():
+      success(0),
+      message("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
@@ -61,11 +76,11 @@ static const char ADDDIAGNOSTICS[] = "diagnostic_msgs/AddDiagnostics";
       u_success.real = this->success;
       *(outbuffer + offset + 0) = (u_success.base >> (8 * 0)) & 0xFF;
       offset += sizeof(this->success);
-      uint32_t * length_message = (uint32_t *)(outbuffer + offset);
-      *length_message = strlen( (const char*) this->message);
+      uint32_t length_message = strlen(this->message);
+      varToArr(outbuffer + offset, length_message);
       offset += 4;
-      memcpy(outbuffer + offset, this->message, *length_message);
-      offset += *length_message;
+      memcpy(outbuffer + offset, this->message, length_message);
+      offset += length_message;
       return offset;
     }
 
@@ -80,7 +95,8 @@ static const char ADDDIAGNOSTICS[] = "diagnostic_msgs/AddDiagnostics";
       u_success.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
       this->success = u_success.real;
       offset += sizeof(this->success);
-      uint32_t length_message = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_message;
+      arrToVar(length_message, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_message; ++k){
           inbuffer[k-1]=inbuffer[k];

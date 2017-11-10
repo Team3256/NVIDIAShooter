@@ -48,6 +48,8 @@ include rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_TopicInfo.py
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_Log.py
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py
+rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py
+rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py
 
@@ -69,11 +71,25 @@ rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/u
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python code from SRV rosserial_msgs/RequestParam"
 	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv
 
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/gensrv_py.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py: /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python code from SRV rosserial_msgs/RequestMessageInfo"
+	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv
+
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/gensrv_py.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py: /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python code from SRV rosserial_msgs/RequestServiceInfo"
+	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv
+
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_TopicInfo.py
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_Log.py
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python msg __init__.py for rosserial_msgs"
 	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg --initpy
 
@@ -81,7 +97,9 @@ rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py: /home/u
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_TopicInfo.py
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_Log.py
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python srv __init__.py for rosserial_msgs"
 	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv --initpy
 
@@ -89,6 +107,8 @@ rosserial_msgs_generate_messages_py: rosserial/rosserial_msgs/CMakeFiles/rosseri
 rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_TopicInfo.py
 rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_Log.py
 rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py
+rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py
+rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py
 rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py
 rosserial_msgs_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py
 rosserial_msgs_generate_messages_py: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.dir/build.make

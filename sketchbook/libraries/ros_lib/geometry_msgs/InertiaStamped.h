@@ -14,8 +14,16 @@ namespace geometry_msgs
   class InertiaStamped : public ros::Msg
   {
     public:
-      std_msgs::Header header;
-      geometry_msgs::Inertia inertia;
+      typedef std_msgs::Header _header_type;
+      _header_type header;
+      typedef geometry_msgs::Inertia _inertia_type;
+      _inertia_type inertia;
+
+    InertiaStamped():
+      header(),
+      inertia()
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {

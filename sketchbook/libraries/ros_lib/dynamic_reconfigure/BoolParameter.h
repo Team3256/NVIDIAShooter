@@ -12,17 +12,25 @@ namespace dynamic_reconfigure
   class BoolParameter : public ros::Msg
   {
     public:
-      char * name;
-      bool value;
+      typedef const char* _name_type;
+      _name_type name;
+      typedef bool _value_type;
+      _value_type value;
+
+    BoolParameter():
+      name(""),
+      value(0)
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_name = (uint32_t *)(outbuffer + offset);
-      *length_name = strlen( (const char*) this->name);
+      uint32_t length_name = strlen(this->name);
+      varToArr(outbuffer + offset, length_name);
       offset += 4;
-      memcpy(outbuffer + offset, this->name, *length_name);
-      offset += *length_name;
+      memcpy(outbuffer + offset, this->name, length_name);
+      offset += length_name;
       union {
         bool real;
         uint8_t base;
@@ -36,7 +44,8 @@ namespace dynamic_reconfigure
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_name = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_name;
+      arrToVar(length_name, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_name; ++k){
           inbuffer[k-1]=inbuffer[k];

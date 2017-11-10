@@ -4,8 +4,8 @@
 (defsystem "shooter-msg"
   :depends-on (:roslisp-msg-protocol :roslisp-utils )
   :components ((:file "_package")
-    (:file "driveShootVals" :depends-on ("_package_driveShootVals"))
-    (:file "_package_driveShootVals" :depends-on ("_package"))
-    (:file "JoyValues" :depends-on ("_package_JoyValues"))
-    (:file "_package_JoyValues" :depends-on ("_package"))
+    (:file "Controls" :depends-on ("_package_Controls"))
+    (:file "_package_Controls" :depends-on ("_package"))
+    (:file "Sensors" :depends-on ("_package_Sensors"))
+    (:file "_package_Sensors" :depends-on ("_package"))
   ))

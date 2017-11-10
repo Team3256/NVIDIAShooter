@@ -3,6 +3,8 @@ FILE(REMOVE_RECURSE
   "/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/TopicInfo.h"
   "/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/Log.h"
   "/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestParam.h"
+  "/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h"
+  "/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -15,8 +15,16 @@ static const char SETMAP[] = "nav_msgs/SetMap";
   class SetMapRequest : public ros::Msg
   {
     public:
-      nav_msgs::OccupancyGrid map;
-      geometry_msgs::PoseWithCovarianceStamped initial_pose;
+      typedef nav_msgs::OccupancyGrid _map_type;
+      _map_type map;
+      typedef geometry_msgs::PoseWithCovarianceStamped _initial_pose_type;
+      _initial_pose_type initial_pose;
+
+    SetMapRequest():
+      map(),
+      initial_pose()
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
@@ -42,7 +50,13 @@ static const char SETMAP[] = "nav_msgs/SetMap";
   class SetMapResponse : public ros::Msg
   {
     public:
-      bool success;
+      typedef bool _success_type;
+      _success_type success;
+
+    SetMapResponse():
+      success(0)
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {

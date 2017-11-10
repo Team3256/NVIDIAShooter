@@ -7,13 +7,12 @@ import struct
 
 
 class JoyValues(genpy.Message):
-  _md5sum = "0e690cc92bcfca43c513ed996fe91f2c"
+  _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "shooter/JoyValues"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """float32[2] axis_vals
-"""
-  __slots__ = ['axis_vals']
-  _slot_types = ['float32[2]']
+  _full_text = """"""
+  __slots__ = []
+  _slot_types = []
 
   def __init__(self, *args, **kwds):
     """
@@ -23,7 +22,7 @@ class JoyValues(genpy.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       axis_vals
+       
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -31,11 +30,6 @@ class JoyValues(genpy.Message):
     """
     if args or kwds:
       super(JoyValues, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
-      if self.axis_vals is None:
-        self.axis_vals = [0.,0.]
-    else:
-      self.axis_vals = [0.,0.]
 
   def _get_types(self):
     """
@@ -49,7 +43,7 @@ class JoyValues(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_struct_2f.pack(*self.axis_vals))
+      pass
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -60,9 +54,6 @@ class JoyValues(genpy.Message):
     """
     try:
       end = 0
-      start = end
-      end += 8
-      self.axis_vals = _struct_2f.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -75,7 +66,7 @@ class JoyValues(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      buff.write(self.axis_vals.tostring())
+      pass
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -87,12 +78,8 @@ class JoyValues(genpy.Message):
     """
     try:
       end = 0
-      start = end
-      end += 8
-      self.axis_vals = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=2)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_2f = struct.Struct("<2f")

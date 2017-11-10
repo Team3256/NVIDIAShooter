@@ -1,1 +1,2 @@
-from ._JoyValues import *
+from ._Controls import *
+from ._Sensors import *

@@ -13,29 +13,38 @@ static const char SETLOGGERLEVEL[] = "roscpp/SetLoggerLevel";
   class SetLoggerLevelRequest : public ros::Msg
   {
     public:
-      char * logger;
-      char * level;
+      typedef const char* _logger_type;
+      _logger_type logger;
+      typedef const char* _level_type;
+      _level_type level;
+
+    SetLoggerLevelRequest():
+      logger(""),
+      level("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_logger = (uint32_t *)(outbuffer + offset);
-      *length_logger = strlen( (const char*) this->logger);
+      uint32_t length_logger = strlen(this->logger);
+      varToArr(outbuffer + offset, length_logger);
       offset += 4;
-      memcpy(outbuffer + offset, this->logger, *length_logger);
-      offset += *length_logger;
-      uint32_t * length_level = (uint32_t *)(outbuffer + offset);
-      *length_level = strlen( (const char*) this->level);
+      memcpy(outbuffer + offset, this->logger, length_logger);
+      offset += length_logger;
+      uint32_t length_level = strlen(this->level);
+      varToArr(outbuffer + offset, length_level);
       offset += 4;
-      memcpy(outbuffer + offset, this->level, *length_level);
-      offset += *length_level;
+      memcpy(outbuffer + offset, this->level, length_level);
+      offset += length_level;
       return offset;
     }
 
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_logger = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_logger;
+      arrToVar(length_logger, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_logger; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -43,7 +52,8 @@ static const char SETLOGGERLEVEL[] = "roscpp/SetLoggerLevel";
       inbuffer[offset+length_logger-1]=0;
       this->logger = (char *)(inbuffer + offset-1);
       offset += length_logger;
-      uint32_t length_level = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_level;
+      arrToVar(length_level, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_level; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -62,6 +72,10 @@ static const char SETLOGGERLEVEL[] = "roscpp/SetLoggerLevel";
   class SetLoggerLevelResponse : public ros::Msg
   {
     public:
+
+    SetLoggerLevelResponse()
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {

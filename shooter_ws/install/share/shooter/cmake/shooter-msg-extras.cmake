@@ -1,2 +1,2 @@
-set(shooter_MESSAGE_FILES "msg/JoyValues.msg")
+set(shooter_MESSAGE_FILES "msg/Controls.msg;msg/Sensors.msg")
 set(shooter_SERVICE_FILES "")

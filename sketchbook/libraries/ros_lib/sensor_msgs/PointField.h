@@ -12,10 +12,14 @@ namespace sensor_msgs
   class PointField : public ros::Msg
   {
     public:
-      char * name;
-      uint32_t offset;
-      uint8_t datatype;
-      uint32_t count;
+      typedef const char* _name_type;
+      _name_type name;
+      typedef uint32_t _offset_type;
+      _offset_type offset;
+      typedef uint8_t _datatype_type;
+      _datatype_type datatype;
+      typedef uint32_t _count_type;
+      _count_type count;
       enum { INT8 =  1 };
       enum { UINT8 =  2 };
       enum { INT16 =  3 };
@@ -25,14 +29,22 @@ namespace sensor_msgs
       enum { FLOAT32 =  7 };
       enum { FLOAT64 =  8 };
 
+    PointField():
+      name(""),
+      offset(0),
+      datatype(0),
+      count(0)
+    {
+    }
+
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_name = (uint32_t *)(outbuffer + offset);
-      *length_name = strlen( (const char*) this->name);
+      uint32_t length_name = strlen(this->name);
+      varToArr(outbuffer + offset, length_name);
       offset += 4;
-      memcpy(outbuffer + offset, this->name, *length_name);
-      offset += *length_name;
+      memcpy(outbuffer + offset, this->name, length_name);
+      offset += length_name;
       *(outbuffer + offset + 0) = (this->offset >> (8 * 0)) & 0xFF;
       *(outbuffer + offset + 1) = (this->offset >> (8 * 1)) & 0xFF;
       *(outbuffer + offset + 2) = (this->offset >> (8 * 2)) & 0xFF;
@@ -51,7 +63,8 @@ namespace sensor_msgs
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_name = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_name;
+      arrToVar(length_name, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_name; ++k){
           inbuffer[k-1]=inbuffer[k];

@@ -3,6 +3,8 @@ FILE(REMOVE_RECURSE
   "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_TopicInfo.py"
   "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/_Log.py"
   "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py"
+  "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestMessageInfo.py"
+  "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestServiceInfo.py"
   "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py"
   "/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py"
 )

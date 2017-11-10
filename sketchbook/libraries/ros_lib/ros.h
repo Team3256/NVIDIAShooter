@@ -37,6 +37,9 @@
 
 #include "ros/node_handle.h"
 #include "ArduinoHardware.h"
+#if defined(ESP8266)
+  #include "Esp8266Hardware.h"
+#endif
 
 namespace ros
 {
@@ -47,6 +50,13 @@ namespace ros
 #elif defined(__AVR_ATmega328P__)
 
   typedef NodeHandle_<ArduinoHardware, 25, 25, 280, 280> NodeHandle;
+
+#elif defined(ESP8266)
+
+  typedef NodeHandle_<Esp8266Hardware> NodeHandle;
+  
+#elif defined(SPARK)
+  typedef NodeHandle_<ArduinoHardware, 10, 10, 2048, 2048> NodeHandle;
 
 #else
 

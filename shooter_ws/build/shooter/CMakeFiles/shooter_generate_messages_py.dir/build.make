@@ -45,23 +45,32 @@ CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
 # Include the progress variables for this target.
 include shooter/CMakeFiles/shooter_generate_messages_py.dir/progress.make
 
-shooter/CMakeFiles/shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_JoyValues.py
+shooter/CMakeFiles/shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Sensors.py
+shooter/CMakeFiles/shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Controls.py
 shooter/CMakeFiles/shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py
 
-/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_JoyValues.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
-/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_JoyValues.py: /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Sensors.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Sensors.py: /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG shooter/JoyValues"
-	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG shooter/Sensors"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg
+
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Controls.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Controls.py: /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG shooter/Controls"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg
 
 /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
-/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_JoyValues.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Sensors.py
+/home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Controls.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python msg __init__.py for shooter"
 	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg --initpy
 
 shooter_generate_messages_py: shooter/CMakeFiles/shooter_generate_messages_py
-shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_JoyValues.py
+shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Sensors.py
+shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/_Controls.py
 shooter_generate_messages_py: /home/ubuntu/shooter_ws/devel/lib/python2.7/dist-packages/shooter/msg/__init__.py
 shooter_generate_messages_py: shooter/CMakeFiles/shooter_generate_messages_py.dir/build.make
 .PHONY : shooter_generate_messages_py

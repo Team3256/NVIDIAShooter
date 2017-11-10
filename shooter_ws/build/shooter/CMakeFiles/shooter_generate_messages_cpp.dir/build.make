@@ -45,17 +45,26 @@ CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
 # Include the progress variables for this target.
 include shooter/CMakeFiles/shooter_generate_messages_cpp.dir/progress.make
 
-shooter/CMakeFiles/shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h
+shooter/CMakeFiles/shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h
+shooter/CMakeFiles/shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/Controls.h
 
-/home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h: /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg
-/home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+/home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h: /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg
+/home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from shooter/JoyValues.msg"
-	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/include/shooter -e /opt/ros/indigo/share/gencpp/cmake/..
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from shooter/Sensors.msg"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/include/shooter -e /opt/ros/indigo/share/gencpp/cmake/..
+
+/home/ubuntu/shooter_ws/devel/include/shooter/Controls.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/ubuntu/shooter_ws/devel/include/shooter/Controls.h: /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg
+/home/ubuntu/shooter_ws/devel/include/shooter/Controls.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from shooter/Controls.msg"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/include/shooter -e /opt/ros/indigo/share/gencpp/cmake/..
 
 shooter_generate_messages_cpp: shooter/CMakeFiles/shooter_generate_messages_cpp
-shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h
+shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h
+shooter_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/shooter/Controls.h
 shooter_generate_messages_cpp: shooter/CMakeFiles/shooter_generate_messages_cpp.dir/build.make
 .PHONY : shooter_generate_messages_cpp
 

@@ -13,10 +13,22 @@ static const char SPAWN[] = "turtlesim/Spawn";
   class SpawnRequest : public ros::Msg
   {
     public:
-      float x;
-      float y;
-      float theta;
-      char * name;
+      typedef float _x_type;
+      _x_type x;
+      typedef float _y_type;
+      _y_type y;
+      typedef float _theta_type;
+      _theta_type theta;
+      typedef const char* _name_type;
+      _name_type name;
+
+    SpawnRequest():
+      x(0),
+      y(0),
+      theta(0),
+      name("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
@@ -51,11 +63,11 @@ static const char SPAWN[] = "turtlesim/Spawn";
       *(outbuffer + offset + 2) = (u_theta.base >> (8 * 2)) & 0xFF;
       *(outbuffer + offset + 3) = (u_theta.base >> (8 * 3)) & 0xFF;
       offset += sizeof(this->theta);
-      uint32_t * length_name = (uint32_t *)(outbuffer + offset);
-      *length_name = strlen( (const char*) this->name);
+      uint32_t length_name = strlen(this->name);
+      varToArr(outbuffer + offset, length_name);
       offset += 4;
-      memcpy(outbuffer + offset, this->name, *length_name);
-      offset += *length_name;
+      memcpy(outbuffer + offset, this->name, length_name);
+      offset += length_name;
       return offset;
     }
 
@@ -95,7 +107,8 @@ static const char SPAWN[] = "turtlesim/Spawn";
       u_theta.base |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
       this->theta = u_theta.real;
       offset += sizeof(this->theta);
-      uint32_t length_name = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_name;
+      arrToVar(length_name, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_name; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -114,23 +127,30 @@ static const char SPAWN[] = "turtlesim/Spawn";
   class SpawnResponse : public ros::Msg
   {
     public:
-      char * name;
+      typedef const char* _name_type;
+      _name_type name;
+
+    SpawnResponse():
+      name("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_name = (uint32_t *)(outbuffer + offset);
-      *length_name = strlen( (const char*) this->name);
+      uint32_t length_name = strlen(this->name);
+      varToArr(outbuffer + offset, length_name);
       offset += 4;
-      memcpy(outbuffer + offset, this->name, *length_name);
-      offset += *length_name;
+      memcpy(outbuffer + offset, this->name, length_name);
+      offset += length_name;
       return offset;
     }
 
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_name = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_name;
+      arrToVar(length_name, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_name; ++k){
           inbuffer[k-1]=inbuffer[k];

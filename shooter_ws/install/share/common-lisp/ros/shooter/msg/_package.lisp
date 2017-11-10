@@ -1,9 +1,9 @@
 (cl:defpackage shooter-msg
   (:use )
   (:export
-   "<DRIVESHOOTVALS>"
-   "DRIVESHOOTVALS"
-   "<JOYVALUES>"
-   "JOYVALUES"
+   "<CONTROLS>"
+   "CONTROLS"
+   "<SENSORS>"
+   "SENSORS"
   ))
 

@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/shooter_generate_messages_cpp"
-  "/home/ubuntu/shooter_ws/devel/include/shooter/JoyValues.h"
+  "/home/ubuntu/shooter_ws/devel/include/shooter/Sensors.h"
+  "/home/ubuntu/shooter_ws/devel/include/shooter/Controls.h"
 )
 
 # Per-language clean rules from dependency scanning.

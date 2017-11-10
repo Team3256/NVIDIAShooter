@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg;/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg"
-services_str = "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv"
+services_str = "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv;/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv;/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv"
 pkg_name = "rosserial_msgs"
 dependencies_str = ""
 langs = "gencpp;genlisp;genpy"

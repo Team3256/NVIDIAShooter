@@ -2,7 +2,7 @@ prefix=/home/ubuntu/shooter_ws/install
 
 Name: rosserial_arduino
 Description: Description of rosserial_arduino
-Version: 0.4.4
+Version: 0.7.6
 Cflags: -I/home/ubuntu/shooter_ws/install/include
 Libs: -L/home/ubuntu/shooter_ws/install/lib 
 Requires: message_runtime

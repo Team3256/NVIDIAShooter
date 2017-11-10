@@ -45,16 +45,24 @@ CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
 # Include the progress variables for this target.
 include shooter/CMakeFiles/shooter_generate_messages_lisp.dir/progress.make
 
-shooter/CMakeFiles/shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/JoyValues.lisp
+shooter/CMakeFiles/shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Sensors.lisp
+shooter/CMakeFiles/shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Controls.lisp
 
-/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/JoyValues.lisp: /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/JoyValues.lisp: /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg
+/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Sensors.lisp: /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Sensors.lisp: /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from shooter/JoyValues.msg"
-	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ubuntu/shooter_ws/src/shooter/msg/JoyValues.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from shooter/Sensors.msg"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ubuntu/shooter_ws/src/shooter/msg/Sensors.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg
+
+/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Controls.lisp: /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Controls.lisp: /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from shooter/Controls.msg"
+	cd /home/ubuntu/shooter_ws/build/shooter && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ubuntu/shooter_ws/src/shooter/msg/Controls.msg -Ishooter:/home/ubuntu/shooter_ws/src/shooter/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p shooter -o /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg
 
 shooter_generate_messages_lisp: shooter/CMakeFiles/shooter_generate_messages_lisp
-shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/JoyValues.lisp
+shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Sensors.lisp
+shooter_generate_messages_lisp: /home/ubuntu/shooter_ws/devel/share/common-lisp/ros/shooter/msg/Controls.lisp
 shooter_generate_messages_lisp: shooter/CMakeFiles/shooter_generate_messages_lisp.dir/build.make
 .PHONY : shooter_generate_messages_lisp
 

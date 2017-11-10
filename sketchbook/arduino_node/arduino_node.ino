@@ -2,110 +2,265 @@
 from the jetson and run the electronics.
 */
 #include <Servo.h>
+#include <Encoder.h>
+#include "/home/ubuntu/sketchbook/libraries/Encoder/Encoder.h"
+
 #include <ros.h>
-#include <std_msgs/UInt16.h>
+#include <std_msgs/Float32MultiArray.h>
+#include <std_msgs/String.h>
 #include <std_msgs/Float32.h>
-#include <std_msgs/Bool.h>
-#define spike1_pin1 2 //signal (white PWM wire)
-#define spike1_pin2 4 //power (red PWN wire)
-#define spike2_pin1 7 //signal (white PWM wire)
-#define spike2_pin2 8 //power (red PWN wire)
 
-#define leftMotor1_pin 3
-#define leftMotor2_pin 5
-#define rightMotor1_pin 6
-#define rightMotor2_pin 9
+#define LED 13
 
-#define manifoldTest1_pin 12
-#define manifoldTest2_pin 13
+#define LEFT_SHOOT_PIN 52
+#define RIGHT_SHOOT_PIN 53
+
+#define LEFT_POP_FORWARD 28
+#define LEFT_POP_REVERSE 26 
+#define RIGHT_POP_FORWARD 24
+#define RIGHT_POP_REVERSE 22
+
+#define LEFT_EJECT_FORWARD 27 
+#define LEFT_EJECT_REVERSE 29 
+#define RIGHT_EJECT_FORWARD 23
+#define RIGHT_EJECT_REVERSE 25 
+
+#define LEFT_SHOOT 30
+#define RIGHT_SHOOT 31
+
+#define LEFT_FRONT_PIN 2
+#define LEFT_BACK_PIN 3
+#define RIGHT_FRONT_PIN 4
+#define RIGHT_BACK_PIN 5
+#define PIVOT_PIN 10
+
+//TODO: ASSIGN PORT NUMBERS
+#define HALL_EFFECT 20
+#define ENCODER_A 18 
+#define ENCODER_B 19
+
+#define TALON_CENTER_PULSE_US 1500
+#define TALON_MIN_PULSE_US 1000
+#define TALON_MAX_PULSE_US 2000
 
 using namespace ros;
 
-Servo leftMotor1;
-Servo leftMotor2;
-Servo rightMotor1;
-Servo rightMotor2;
+Encoder pivotEnc(ENCODER_A, ENCODER_B);
+
+Servo left_front;
+Servo left_back;
+Servo right_front;
+Servo right_back;
+Servo pivot;
+
 NodeHandle nh;
-int A,B;
-void runLMotor(int left){
-  int leftSpeed = 1500 + (5*left);
-  leftMotor1.writeMicroseconds(leftSpeed);
-  leftMotor2.writeMicroseconds(leftSpeed);
+
+std_msgs::Float32MultiArray sensorVals;
+std_msgs::Float32 debug_msg;
+ros::Publisher pub("sensors",&sensorVals);
+ros::Publisher debug("debug", &debug_msg);
+
+bool is_left_reloading = false;
+bool is_right_reloading = false;
+long pivotPos = -999;
+
+void run_motor(Servo motor, double power){
+	power *= 100;
+	int pulse_us = TALON_CENTER_PULSE_US + (5*power);
+	if (pulse_us < TALON_MIN_PULSE_US) pulse_us = TALON_MIN_PULSE_US;
+	if (pulse_us > TALON_MAX_PULSE_US) pulse_us = TALON_MAX_PULSE_US;
+	motor.writeMicroseconds(pulse_us); 
 }
-void runRMotor(int right){
-  int rightSpeed = 1500 + (-5*right);
-  rightMotor1.writeMicroseconds(rightSpeed);
-  rightMotor2.writeMicroseconds(rightSpeed);
+
+void shoot(){
+	//TODO: implement
 }
-void shootL(boolean left, int wait){
- if (left){
-   digitalWrite(spike1_pin1, HIGH);
-   digitalWrite(spike1_pin2, LOW); 
-   
-  delay(wait);
- }
-  digitalWrite(spike1_pin1, LOW);
-  digitalWrite(spike1_pin2, LOW); 
-  digitalWrite(spike2_pin1, LOW);
-  digitalWrite(spike2_pin2, LOW);
- return; 
+
+void pop_left(){
+	digitalWrite(LEFT_POP_FORWARD, HIGH);	
+	digitalWrite(LEFT_POP_REVERSE, LOW);
 }
-void shootR(boolean right, int wait){
-  if (right){
-   digitalWrite(spike2_pin1, HIGH);
-   digitalWrite(spike2_pin2, LOW); 
-  delay(wait);
- }
-  digitalWrite(spike1_pin1, LOW);
-  digitalWrite(spike1_pin2, LOW); 
-  digitalWrite(spike2_pin1, LOW);
-  digitalWrite(spike2_pin2, LOW); 
- return;
+
+void pop_right(){
+	digitalWrite(RIGHT_POP_FORWARD, HIGH);
+	digitalWrite(RIGHT_POP_REVERSE, LOW);
 }
-void lmcallback(const std_msgs::Float32& msg){
-  double left_speed = msg.data;
-  runLMotor(left_speed);
+
+void push_left(){
+	digitalWrite(LEFT_POP_FORWARD, LOW);
+	digitalWrite(LEFT_POP_REVERSE, HIGH);
 }
-void rmcallback(const std_msgs::Float32& msg){
-  double right_speed = msg.data;
-  runRMotor(right_speed);
+
+void push_right(){
+	digitalWrite(RIGHT_POP_FORWARD, LOW); 
+	digitalWrite(RIGHT_POP_REVERSE, HIGH);
 }
-void lbcallback(const std_msgs::Bool& msg){
-  boolean b = msg.data;
-  shootL(b,30);
+
+void eject_left(){
+	digitalWrite(LEFT_EJECT_FORWARD, HIGH);
+	digitalWrite(LEFT_EJECT_REVERSE, LOW);
 }
-void rbcallback(const std_msgs::Bool& msg){
-  boolean b = msg.data;
-  shootR(b,30);
+
+void eject_right(){
+	digitalWrite(RIGHT_EJECT_FORWARD, HIGH);
+	digitalWrite(RIGHT_EJECT_REVERSE, LOW);
 }
-Subscriber<std_msgs::Float32> lmotor_sub("l_motor", &lmcallback);
-Subscriber<std_msgs::Float32> rmotor_sub("r_motor", &rmcallback);
-Subscriber<std_msgs::Bool> lbarrel_sub("l_barrel", &lbcallback);
-Subscriber<std_msgs::Bool> rbarrel_sub("r_barrel", &rbcallback);
+
+void retract_left(){
+	digitalWrite(LEFT_EJECT_FORWARD, LOW);
+	digitalWrite(LEFT_EJECT_REVERSE, HIGH);
+}
+
+void retract_right(){
+	digitalWrite(RIGHT_EJECT_FORWARD, LOW);
+	digitalWrite(RIGHT_EJECT_REVERSE, HIGH);	
+}
+void shoot_right(int wait){
+	digitalWrite(RIGHT_SHOOT, LOW);
+	delay(wait);
+	digitalWrite(RIGHT_SHOOT, HIGH);
+}
+void shoot_left(int wait){
+	digitalWrite(LEFT_SHOOT, LOW);
+	delay(wait);
+	digitalWrite(LEFT_SHOOT, HIGH);
+} 
+
+bool hallEffect(){
+	return !digitalRead(HALL_EFFECT);
+}
+
+void controls_callback(const std_msgs::Float32MultiArray& data){
+	float left_drive = data.data[0];
+	float right_drive = data.data[1];
+	float pivot_power = data.data[2];
+	bool left_shoot = data.data[3] != 0;
+	bool right_shoot = data.data[4] != 0;
+	bool left_reload = data.data[5] != 0;
+	bool right_reload = data.data[6] != 0;	
+	bool pivot_forward = data.data[7] != 0;
+	bool pivot_backward = data.data[8] != 0;	
+	float jetson_time = data.data[9];
+
+	//run drive
+	run_motor(left_front, left_drive);	
+	run_motor(left_back, left_drive);
+	run_motor(right_front, -right_drive);
+	run_motor(right_back, -right_drive);
+
+	//shoot
+	if (left_shoot){
+		shoot_left(60);
+	}
+	if (right_shoot){
+		shoot_right(60);
+	}
+	
+	pivot_power = pivot_backward ? pivot_power*-1 : pivot_power;
+
+	//run pivot
+	if (pivotPos > 3000){
+		pivot_power = min(pivot_power, 0);	
+	}
+	else if (pivotPos < -3000){
+		pivot_power = max(pivot_power, 0);
+	}
+	if (pivot_forward || pivot_backward){
+		run_motor(pivot, pivot_power);
+	} 
+	else {
+		run_motor(pivot, 0);
+	}
+	debug_msg.data = pivot_power;
+	debug.publish( &debug_msg);
+	
+	//automatic reloading
+	if (left_reload && !is_left_reloading){
+		is_left_reloading = true;
+		pop_left();	
+		delay(500);
+		eject_left();
+		delay(500);
+		retract_left();
+		delay(500);
+		push_left();
+		is_left_reloading = false;
+	}
+	
+	if (right_reload && !is_right_reloading){
+		is_right_reloading = true;
+		pop_right();	
+		delay(500);
+		eject_right();
+		delay(500);
+		retract_right();
+		delay(500);
+		push_right();
+		is_right_reloading = false;
+	}
+}
+
+Subscriber<std_msgs::Float32MultiArray> sub("controls", &controls_callback);
 
 void setup(){
-  pinMode(spike1_pin1, OUTPUT);
-  pinMode(spike1_pin2, OUTPUT);
-  pinMode(spike2_pin1, OUTPUT);
-  pinMode(spike2_pin2, OUTPUT);
-  
-  pinMode(manifoldTest1_pin, OUTPUT);
-  pinMode(manifoldTest2_pin, OUTPUT);
-  
-  leftMotor1.attach(leftMotor1_pin);
-  leftMotor2.attach(leftMotor2_pin);
-  rightMotor1.attach(rightMotor1_pin);
-  rightMotor2.attach(rightMotor2_pin);
 
-  nh.initNode();
-  nh.subscribe(lmotor_sub);
-  nh.subscribe(rmotor_sub);
-  nh.subscribe(lbarrel_sub);
-  nh.subscribe(rbarrel_sub);
+	left_front.attach(LEFT_FRONT_PIN);
+	left_back.attach(LEFT_BACK_PIN);
+	right_front.attach(RIGHT_FRONT_PIN);
+	right_back.attach(RIGHT_BACK_PIN);
+	pivot.attach(PIVOT_PIN);
+	
+	sensorVals.data[1] = pivotPos;	
+	pinMode(LED, OUTPUT);
+	pinMode(HALL_EFFECT, INPUT);
+
+	pinMode(LEFT_POP_FORWARD, OUTPUT);
+	pinMode(LEFT_POP_REVERSE, OUTPUT);
+	pinMode(RIGHT_POP_FORWARD, OUTPUT);
+	pinMode(RIGHT_POP_REVERSE, OUTPUT);
+
+	pinMode(LEFT_EJECT_FORWARD, OUTPUT);
+	pinMode(LEFT_EJECT_REVERSE, OUTPUT);
+	pinMode(RIGHT_EJECT_FORWARD, OUTPUT);
+	pinMode(RIGHT_EJECT_REVERSE, OUTPUT);
+
+	pinMode(LEFT_SHOOT, OUTPUT);
+	pinMode(RIGHT_SHOOT, OUTPUT);
+	
+	//close electronic solenoids
+	digitalWrite(LEFT_SHOOT, HIGH);
+	digitalWrite(RIGHT_SHOOT, HIGH);
+
+	// set barrel and ejectors to default(shooting) position
+	retract_left();
+	retract_right();
+	pop_left();
+	pop_right();
+
+	sensorVals.data_length = 2;
+
+	nh.initNode();
+	nh.advertise(pub);
+	nh.advertise(debug);
+	nh.subscribe(sub);
+	
 }
 
 void loop(){
-  nh.spinOnce();
-  delay(1);
+	//Update 
+	pivotPos = pivotEnc.read();
+
+	//update sensor topic
+	if (hallEffect()){
+		pivotEnc.write(0);
+		sensorVals.data[0] = 1.0;
+	} else {
+		sensorVals.data[0] = 0.0;
+	}
+	sensorVals.data[1] = pivotPos;
+	pub.publish( &sensorVals);
+	
+	nh.spinOnce();
+	delay(50);
 }
 

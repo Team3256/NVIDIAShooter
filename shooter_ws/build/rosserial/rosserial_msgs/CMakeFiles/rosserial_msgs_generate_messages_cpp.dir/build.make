@@ -48,6 +48,8 @@ include rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/TopicInfo.h
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/Log.h
 rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestParam.h
+rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h
+rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h
 
 /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/TopicInfo.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
 /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/TopicInfo.h: /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg
@@ -71,10 +73,28 @@ rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp: /home/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from rosserial_msgs/RequestParam.srv"
 	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/include/rosserial_msgs -e /opt/ros/indigo/share/gencpp/cmake/..
 
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h: /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h: /opt/ros/indigo/share/gencpp/cmake/../srv.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from rosserial_msgs/RequestMessageInfo.srv"
+	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/include/rosserial_msgs -e /opt/ros/indigo/share/gencpp/cmake/..
+
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h: /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+/home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h: /opt/ros/indigo/share/gencpp/cmake/../srv.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/shooter_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from rosserial_msgs/RequestServiceInfo.srv"
+	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv -Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg -p rosserial_msgs -o /home/ubuntu/shooter_ws/devel/include/rosserial_msgs -e /opt/ros/indigo/share/gencpp/cmake/..
+
 rosserial_msgs_generate_messages_cpp: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp
 rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/TopicInfo.h
 rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/Log.h
 rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestParam.h
+rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestMessageInfo.h
+rosserial_msgs_generate_messages_cpp: /home/ubuntu/shooter_ws/devel/include/rosserial_msgs/RequestServiceInfo.h
 rosserial_msgs_generate_messages_cpp: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_cpp.dir/build.make
 .PHONY : rosserial_msgs_generate_messages_cpp
 

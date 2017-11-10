@@ -149,19 +149,238 @@ depend:
 	cd /home/ubuntu/shooter_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/rule
+
+# Convenience name for target.
+_run_tests_rosserial_client: rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/rule
+.PHONY : _run_tests_rosserial_client
+
+# fast build rule for target.
+_run_tests_rosserial_client/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/build.make rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client.dir/build
+.PHONY : _run_tests_rosserial_client/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/rule
+
+# Convenience name for target.
+_run_tests_rosserial_client_gtest: rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/rule
+.PHONY : _run_tests_rosserial_client_gtest
+
+# fast build rule for target.
+_run_tests_rosserial_client_gtest/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/build.make rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest.dir/build
+.PHONY : _run_tests_rosserial_client_gtest/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/rule
+
+# Convenience name for target.
+_run_tests_rosserial_client_gtest_float64_test: rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/rule
+.PHONY : _run_tests_rosserial_client_gtest_float64_test
+
+# fast build rule for target.
+_run_tests_rosserial_client_gtest_float64_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_float64_test.dir/build
+.PHONY : _run_tests_rosserial_client_gtest_float64_test/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+
+# Convenience name for target.
+_run_tests_rosserial_client_gtest_subscriber_test: rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+.PHONY : _run_tests_rosserial_client_gtest_subscriber_test
+
+# fast build rule for target.
+_run_tests_rosserial_client_gtest_subscriber_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/_run_tests_rosserial_client_gtest_subscriber_test.dir/build
+.PHONY : _run_tests_rosserial_client_gtest_subscriber_test/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/rule
+
+# Convenience name for target.
+clean_test_results_rosserial_client: rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/rule
+.PHONY : clean_test_results_rosserial_client
+
+# fast build rule for target.
+clean_test_results_rosserial_client/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/build.make rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client.dir/build
+.PHONY : clean_test_results_rosserial_client/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/float64_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/float64_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/float64_test.dir/rule
+
+# Convenience name for target.
+float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/rule
+.PHONY : float64_test
+
+# fast build rule for target.
+float64_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/float64_test.dir/build
+.PHONY : float64_test/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/rule
+
+# Convenience name for target.
+run_tests_rosserial_client: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/rule
+.PHONY : run_tests_rosserial_client
+
+# fast build rule for target.
+run_tests_rosserial_client/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/build.make rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client.dir/build
+.PHONY : run_tests_rosserial_client/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/rule
+
+# Convenience name for target.
+run_tests_rosserial_client_gtest: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/rule
+.PHONY : run_tests_rosserial_client_gtest
+
+# fast build rule for target.
+run_tests_rosserial_client_gtest/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/build.make rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest.dir/build
+.PHONY : run_tests_rosserial_client_gtest/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/rule
+
+# Convenience name for target.
+run_tests_rosserial_client_gtest_float64_test: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/rule
+.PHONY : run_tests_rosserial_client_gtest_float64_test
+
+# fast build rule for target.
+run_tests_rosserial_client_gtest_float64_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_float64_test.dir/build
+.PHONY : run_tests_rosserial_client_gtest_float64_test/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+
+# Convenience name for target.
+run_tests_rosserial_client_gtest_subscriber_test: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/rule
+.PHONY : run_tests_rosserial_client_gtest_subscriber_test
+
+# fast build rule for target.
+run_tests_rosserial_client_gtest_subscriber_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/build
+.PHONY : run_tests_rosserial_client_gtest_subscriber_test/fast
+
+# Convenience name for target.
+rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/rule
+.PHONY : rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/rule
+
+# Convenience name for target.
+subscriber_test: rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/rule
+.PHONY : subscriber_test
+
+# fast build rule for target.
+subscriber_test/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/build
+.PHONY : subscriber_test/fast
+
+test/float64_test.o: test/float64_test.cpp.o
+.PHONY : test/float64_test.o
+
+# target to build an object file
+test/float64_test.cpp.o:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o
+.PHONY : test/float64_test.cpp.o
+
+test/float64_test.i: test/float64_test.cpp.i
+.PHONY : test/float64_test.i
+
+# target to preprocess a source file
+test/float64_test.cpp.i:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.i
+.PHONY : test/float64_test.cpp.i
+
+test/float64_test.s: test/float64_test.cpp.s
+.PHONY : test/float64_test.s
+
+# target to generate assembly for a file
+test/float64_test.cpp.s:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.s
+.PHONY : test/float64_test.cpp.s
+
+test/subscriber_test.o: test/subscriber_test.cpp.o
+.PHONY : test/subscriber_test.o
+
+# target to build an object file
+test/subscriber_test.cpp.o:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/test/subscriber_test.cpp.o
+.PHONY : test/subscriber_test.cpp.o
+
+test/subscriber_test.i: test/subscriber_test.cpp.i
+.PHONY : test/subscriber_test.i
+
+# target to preprocess a source file
+test/subscriber_test.cpp.i:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/test/subscriber_test.cpp.i
+.PHONY : test/subscriber_test.cpp.i
+
+test/subscriber_test.s: test/subscriber_test.cpp.s
+.PHONY : test/subscriber_test.s
+
+# target to generate assembly for a file
+test/subscriber_test.cpp.s:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/build.make rosserial/rosserial_client/CMakeFiles/subscriber_test.dir/test/subscriber_test.cpp.s
+.PHONY : test/subscriber_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... _run_tests_rosserial_client"
+	@echo "... _run_tests_rosserial_client_gtest"
+	@echo "... _run_tests_rosserial_client_gtest_float64_test"
+	@echo "... _run_tests_rosserial_client_gtest_subscriber_test"
+	@echo "... clean_test_results_rosserial_client"
 	@echo "... edit_cache"
+	@echo "... float64_test"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... run_tests_rosserial_client"
+	@echo "... run_tests_rosserial_client_gtest"
+	@echo "... run_tests_rosserial_client_gtest_float64_test"
+	@echo "... run_tests_rosserial_client_gtest_subscriber_test"
+	@echo "... subscriber_test"
 	@echo "... test"
+	@echo "... test/float64_test.o"
+	@echo "... test/float64_test.i"
+	@echo "... test/float64_test.s"
+	@echo "... test/subscriber_test.o"
+	@echo "... test/subscriber_test.i"
+	@echo "... test/subscriber_test.s"
 .PHONY : help
 
 

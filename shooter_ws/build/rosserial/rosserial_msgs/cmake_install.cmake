@@ -40,7 +40,11 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_msgs/srv" TYPE FILE FILES "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_msgs/srv" TYPE FILE FILES
+    "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestParam.srv"
+    "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv"
+    "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv"
+    )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

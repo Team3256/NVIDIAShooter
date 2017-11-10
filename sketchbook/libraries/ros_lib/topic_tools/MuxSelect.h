@@ -13,23 +13,30 @@ static const char MUXSELECT[] = "topic_tools/MuxSelect";
   class MuxSelectRequest : public ros::Msg
   {
     public:
-      char * topic;
+      typedef const char* _topic_type;
+      _topic_type topic;
+
+    MuxSelectRequest():
+      topic("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_topic = (uint32_t *)(outbuffer + offset);
-      *length_topic = strlen( (const char*) this->topic);
+      uint32_t length_topic = strlen(this->topic);
+      varToArr(outbuffer + offset, length_topic);
       offset += 4;
-      memcpy(outbuffer + offset, this->topic, *length_topic);
-      offset += *length_topic;
+      memcpy(outbuffer + offset, this->topic, length_topic);
+      offset += length_topic;
       return offset;
     }
 
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_topic = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_topic;
+      arrToVar(length_topic, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_topic; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -48,23 +55,30 @@ static const char MUXSELECT[] = "topic_tools/MuxSelect";
   class MuxSelectResponse : public ros::Msg
   {
     public:
-      char * prev_topic;
+      typedef const char* _prev_topic_type;
+      _prev_topic_type prev_topic;
+
+    MuxSelectResponse():
+      prev_topic("")
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_prev_topic = (uint32_t *)(outbuffer + offset);
-      *length_prev_topic = strlen( (const char*) this->prev_topic);
+      uint32_t length_prev_topic = strlen(this->prev_topic);
+      varToArr(outbuffer + offset, length_prev_topic);
       offset += 4;
-      memcpy(outbuffer + offset, this->prev_topic, *length_prev_topic);
-      offset += *length_prev_topic;
+      memcpy(outbuffer + offset, this->prev_topic, length_prev_topic);
+      offset += length_prev_topic;
       return offset;
     }
 
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_prev_topic = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_prev_topic;
+      arrToVar(length_prev_topic, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_prev_topic; ++k){
           inbuffer[k-1]=inbuffer[k];

@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "rosserial_msgs: 2 messages, 1 services")
+message(STATUS "rosserial_msgs: 2 messages, 3 services")
 
 set(MSG_I_FLAGS "-Irosserial_msgs:/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg")
 
@@ -25,9 +25,19 @@ add_custom_target(_rosserial_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rosserial_msgs" "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg" ""
 )
 
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv" NAME_WE)
+add_custom_target(_rosserial_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rosserial_msgs" "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv" ""
+)
+
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg" NAME_WE)
 add_custom_target(_rosserial_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rosserial_msgs" "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg" ""
+)
+
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv" NAME_WE)
+add_custom_target(_rosserial_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rosserial_msgs" "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv" ""
 )
 
 #
@@ -56,6 +66,18 @@ _generate_srv_cpp(rosserial_msgs
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rosserial_msgs
 )
+_generate_srv_cpp(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rosserial_msgs
+)
+_generate_srv_cpp(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rosserial_msgs
+)
 
 ### Generating Module File
 _generate_module_cpp(rosserial_msgs
@@ -73,7 +95,11 @@ get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosseria
 add_dependencies(rosserial_msgs_generate_messages_cpp _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_cpp _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_cpp _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_cpp _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_cpp _rosserial_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -105,6 +131,18 @@ _generate_srv_lisp(rosserial_msgs
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rosserial_msgs
 )
+_generate_srv_lisp(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rosserial_msgs
+)
+_generate_srv_lisp(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rosserial_msgs
+)
 
 ### Generating Module File
 _generate_module_lisp(rosserial_msgs
@@ -122,7 +160,11 @@ get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosseria
 add_dependencies(rosserial_msgs_generate_messages_lisp _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_lisp _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_lisp _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_lisp _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_lisp _rosserial_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -154,6 +196,18 @@ _generate_srv_py(rosserial_msgs
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rosserial_msgs
 )
+_generate_srv_py(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rosserial_msgs
+)
+_generate_srv_py(rosserial_msgs
+  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rosserial_msgs
+)
 
 ### Generating Module File
 _generate_module_py(rosserial_msgs
@@ -171,7 +225,11 @@ get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosseria
 add_dependencies(rosserial_msgs_generate_messages_py _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/TopicInfo.msg" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_py _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestMessageInfo.srv" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_py _rosserial_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/msg/Log.msg" NAME_WE)
+add_dependencies(rosserial_msgs_generate_messages_py _rosserial_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ubuntu/shooter_ws/src/rosserial/rosserial_msgs/srv/RequestServiceInfo.srv" NAME_WE)
 add_dependencies(rosserial_msgs_generate_messages_py _rosserial_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

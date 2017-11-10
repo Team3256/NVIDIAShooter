@@ -14,27 +14,45 @@ namespace tf2_msgs
   class LookupTransformGoal : public ros::Msg
   {
     public:
-      char * target_frame;
-      char * source_frame;
-      ros::Time source_time;
-      ros::Duration timeout;
-      ros::Time target_time;
-      char * fixed_frame;
-      bool advanced;
+      typedef const char* _target_frame_type;
+      _target_frame_type target_frame;
+      typedef const char* _source_frame_type;
+      _source_frame_type source_frame;
+      typedef ros::Time _source_time_type;
+      _source_time_type source_time;
+      typedef ros::Duration _timeout_type;
+      _timeout_type timeout;
+      typedef ros::Time _target_time_type;
+      _target_time_type target_time;
+      typedef const char* _fixed_frame_type;
+      _fixed_frame_type fixed_frame;
+      typedef bool _advanced_type;
+      _advanced_type advanced;
+
+    LookupTransformGoal():
+      target_frame(""),
+      source_frame(""),
+      source_time(),
+      timeout(),
+      target_time(),
+      fixed_frame(""),
+      advanced(0)
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      uint32_t * length_target_frame = (uint32_t *)(outbuffer + offset);
-      *length_target_frame = strlen( (const char*) this->target_frame);
+      uint32_t length_target_frame = strlen(this->target_frame);
+      varToArr(outbuffer + offset, length_target_frame);
       offset += 4;
-      memcpy(outbuffer + offset, this->target_frame, *length_target_frame);
-      offset += *length_target_frame;
-      uint32_t * length_source_frame = (uint32_t *)(outbuffer + offset);
-      *length_source_frame = strlen( (const char*) this->source_frame);
+      memcpy(outbuffer + offset, this->target_frame, length_target_frame);
+      offset += length_target_frame;
+      uint32_t length_source_frame = strlen(this->source_frame);
+      varToArr(outbuffer + offset, length_source_frame);
       offset += 4;
-      memcpy(outbuffer + offset, this->source_frame, *length_source_frame);
-      offset += *length_source_frame;
+      memcpy(outbuffer + offset, this->source_frame, length_source_frame);
+      offset += length_source_frame;
       *(outbuffer + offset + 0) = (this->source_time.sec >> (8 * 0)) & 0xFF;
       *(outbuffer + offset + 1) = (this->source_time.sec >> (8 * 1)) & 0xFF;
       *(outbuffer + offset + 2) = (this->source_time.sec >> (8 * 2)) & 0xFF;
@@ -65,11 +83,11 @@ namespace tf2_msgs
       *(outbuffer + offset + 2) = (this->target_time.nsec >> (8 * 2)) & 0xFF;
       *(outbuffer + offset + 3) = (this->target_time.nsec >> (8 * 3)) & 0xFF;
       offset += sizeof(this->target_time.nsec);
-      uint32_t * length_fixed_frame = (uint32_t *)(outbuffer + offset);
-      *length_fixed_frame = strlen( (const char*) this->fixed_frame);
+      uint32_t length_fixed_frame = strlen(this->fixed_frame);
+      varToArr(outbuffer + offset, length_fixed_frame);
       offset += 4;
-      memcpy(outbuffer + offset, this->fixed_frame, *length_fixed_frame);
-      offset += *length_fixed_frame;
+      memcpy(outbuffer + offset, this->fixed_frame, length_fixed_frame);
+      offset += length_fixed_frame;
       union {
         bool real;
         uint8_t base;
@@ -83,7 +101,8 @@ namespace tf2_msgs
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      uint32_t length_target_frame = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_target_frame;
+      arrToVar(length_target_frame, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_target_frame; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -91,7 +110,8 @@ namespace tf2_msgs
       inbuffer[offset+length_target_frame-1]=0;
       this->target_frame = (char *)(inbuffer + offset-1);
       offset += length_target_frame;
-      uint32_t length_source_frame = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_source_frame;
+      arrToVar(length_source_frame, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_source_frame; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -129,7 +149,8 @@ namespace tf2_msgs
       this->target_time.nsec |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
       this->target_time.nsec |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
       offset += sizeof(this->target_time.nsec);
-      uint32_t length_fixed_frame = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_fixed_frame;
+      arrToVar(length_fixed_frame, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_fixed_frame; ++k){
           inbuffer[k-1]=inbuffer[k];

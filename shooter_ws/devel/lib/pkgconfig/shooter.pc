@@ -3,6 +3,6 @@ prefix=/home/ubuntu/shooter_ws/devel
 Name: shooter
 Description: Description of shooter
 Version: 0.0.0
-Cflags: -I/home/ubuntu/shooter_ws/devel/include
+Cflags: 
 Libs: -L/home/ubuntu/shooter_ws/devel/lib 
-Requires: message_runtime
+Requires: rospy std_msgs

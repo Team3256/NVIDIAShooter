@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rosserial_python"
 PROJECT_SPACE_DIR = "/home/ubuntu/shooter_ws/devel"
-PROJECT_VERSION = "0.4.4"
+PROJECT_VERSION = "0.7.6"

@@ -12,14 +12,28 @@ namespace visualization_msgs
   class MenuEntry : public ros::Msg
   {
     public:
-      uint32_t id;
-      uint32_t parent_id;
-      char * title;
-      char * command;
-      uint8_t command_type;
+      typedef uint32_t _id_type;
+      _id_type id;
+      typedef uint32_t _parent_id_type;
+      _parent_id_type parent_id;
+      typedef const char* _title_type;
+      _title_type title;
+      typedef const char* _command_type;
+      _command_type command;
+      typedef uint8_t _command_type_type;
+      _command_type_type command_type;
       enum { FEEDBACK = 0 };
       enum { ROSRUN = 1 };
       enum { ROSLAUNCH = 2 };
+
+    MenuEntry():
+      id(0),
+      parent_id(0),
+      title(""),
+      command(""),
+      command_type(0)
+    {
+    }
 
     virtual int serialize(unsigned char *outbuffer) const
     {
@@ -34,16 +48,16 @@ namespace visualization_msgs
       *(outbuffer + offset + 2) = (this->parent_id >> (8 * 2)) & 0xFF;
       *(outbuffer + offset + 3) = (this->parent_id >> (8 * 3)) & 0xFF;
       offset += sizeof(this->parent_id);
-      uint32_t * length_title = (uint32_t *)(outbuffer + offset);
-      *length_title = strlen( (const char*) this->title);
+      uint32_t length_title = strlen(this->title);
+      varToArr(outbuffer + offset, length_title);
       offset += 4;
-      memcpy(outbuffer + offset, this->title, *length_title);
-      offset += *length_title;
-      uint32_t * length_command = (uint32_t *)(outbuffer + offset);
-      *length_command = strlen( (const char*) this->command);
+      memcpy(outbuffer + offset, this->title, length_title);
+      offset += length_title;
+      uint32_t length_command = strlen(this->command);
+      varToArr(outbuffer + offset, length_command);
       offset += 4;
-      memcpy(outbuffer + offset, this->command, *length_command);
-      offset += *length_command;
+      memcpy(outbuffer + offset, this->command, length_command);
+      offset += length_command;
       *(outbuffer + offset + 0) = (this->command_type >> (8 * 0)) & 0xFF;
       offset += sizeof(this->command_type);
       return offset;
@@ -62,7 +76,8 @@ namespace visualization_msgs
       this->parent_id |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
       this->parent_id |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
       offset += sizeof(this->parent_id);
-      uint32_t length_title = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_title;
+      arrToVar(length_title, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_title; ++k){
           inbuffer[k-1]=inbuffer[k];
@@ -70,7 +85,8 @@ namespace visualization_msgs
       inbuffer[offset+length_title-1]=0;
       this->title = (char *)(inbuffer + offset-1);
       offset += length_title;
-      uint32_t length_command = *(uint32_t *)(inbuffer + offset);
+      uint32_t length_command;
+      arrToVar(length_command, (inbuffer + offset));
       offset += 4;
       for(unsigned int k= offset; k< offset+length_command; ++k){
           inbuffer[k-1]=inbuffer[k];

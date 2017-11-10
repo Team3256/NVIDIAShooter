@@ -164,6 +164,20 @@ _rosserial_msgs_generate_messages_check_deps_Log/fast:
 .PHONY : _rosserial_msgs_generate_messages_check_deps_Log/fast
 
 # Convenience name for target.
+rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/rule
+.PHONY : rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/rule
+
+# Convenience name for target.
+_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo: rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/rule
+.PHONY : _rosserial_msgs_generate_messages_check_deps_RequestMessageInfo
+
+# fast build rule for target.
+_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/build.make rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestMessageInfo.dir/build
+.PHONY : _rosserial_msgs_generate_messages_check_deps_RequestMessageInfo/fast
+
+# Convenience name for target.
 rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestParam.dir/rule:
 	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestParam.dir/rule
 .PHONY : rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestParam.dir/rule
@@ -176,6 +190,20 @@ _rosserial_msgs_generate_messages_check_deps_RequestParam: rosserial/rosserial_m
 _rosserial_msgs_generate_messages_check_deps_RequestParam/fast:
 	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestParam.dir/build.make rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestParam.dir/build
 .PHONY : _rosserial_msgs_generate_messages_check_deps_RequestParam/fast
+
+# Convenience name for target.
+rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/rule:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/rule
+.PHONY : rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/rule
+
+# Convenience name for target.
+_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo: rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/rule
+.PHONY : _rosserial_msgs_generate_messages_check_deps_RequestServiceInfo
+
+# fast build rule for target.
+_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo/fast:
+	cd /home/ubuntu/shooter_ws/build && $(MAKE) -f rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/build.make rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_RequestServiceInfo.dir/build
+.PHONY : _rosserial_msgs_generate_messages_check_deps_RequestServiceInfo/fast
 
 # Convenience name for target.
 rosserial/rosserial_msgs/CMakeFiles/_rosserial_msgs_generate_messages_check_deps_TopicInfo.dir/rule:
@@ -296,7 +324,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... _rosserial_msgs_generate_messages_check_deps_Log"
+	@echo "... _rosserial_msgs_generate_messages_check_deps_RequestMessageInfo"
 	@echo "... _rosserial_msgs_generate_messages_check_deps_RequestParam"
+	@echo "... _rosserial_msgs_generate_messages_check_deps_RequestServiceInfo"
 	@echo "... _rosserial_msgs_generate_messages_check_deps_TopicInfo"
 	@echo "... edit_cache"
 	@echo "... install"
