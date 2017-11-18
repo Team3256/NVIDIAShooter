@@ -1,8 +1,8 @@
-prefix=/home/ubuntu/shooter_ws/install
+prefix=/home/ubuntu/NVIDIAShooter/shooter_ws/install
 
 Name: rosserial_msgs
 Description: Description of rosserial_msgs
 Version: 0.7.6
-Cflags: -I/home/ubuntu/shooter_ws/install/include
-Libs: -L/home/ubuntu/shooter_ws/install/lib 
+Cflags: -I/home/ubuntu/NVIDIAShooter/shooter_ws/install/include
+Libs: -L/home/ubuntu/NVIDIAShooter/shooter_ws/install/lib 
 Requires: message_runtime

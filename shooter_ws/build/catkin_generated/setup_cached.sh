@@ -7,4 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/ubuntu/shooter_ws/build"
+export PWD="/home/ubuntu/NVIDIAShooter/shooter_ws/build"
+export ROS_PACKAGE_PATH="/home/ubuntu/NVIDIAShooter/shooter_ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

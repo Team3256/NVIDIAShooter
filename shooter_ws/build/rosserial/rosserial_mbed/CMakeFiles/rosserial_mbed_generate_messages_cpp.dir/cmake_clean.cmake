@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/rosserial_mbed_generate_messages_cpp"
-  "/home/ubuntu/shooter_ws/devel/include/rosserial_mbed/Adc.h"
-  "/home/ubuntu/shooter_ws/devel/include/rosserial_mbed/Test.h"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/include/rosserial_mbed/Adc.h"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/include/rosserial_mbed/Test.h"
 )
 
 # Per-language clean rules from dependency scanning.

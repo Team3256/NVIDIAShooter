@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/shooter_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/build
 
 # Utility rule file for shooter_generate_messages.
 
@@ -56,10 +56,10 @@ shooter/CMakeFiles/shooter_generate_messages.dir/build: shooter_generate_message
 .PHONY : shooter/CMakeFiles/shooter_generate_messages.dir/build
 
 shooter/CMakeFiles/shooter_generate_messages.dir/clean:
-	cd /home/ubuntu/shooter_ws/build/shooter && $(CMAKE_COMMAND) -P CMakeFiles/shooter_generate_messages.dir/cmake_clean.cmake
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/shooter && $(CMAKE_COMMAND) -P CMakeFiles/shooter_generate_messages.dir/cmake_clean.cmake
 .PHONY : shooter/CMakeFiles/shooter_generate_messages.dir/clean
 
 shooter/CMakeFiles/shooter_generate_messages.dir/depend:
-	cd /home/ubuntu/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/shooter_ws/src /home/ubuntu/shooter_ws/src/shooter /home/ubuntu/shooter_ws/build /home/ubuntu/shooter_ws/build/shooter /home/ubuntu/shooter_ws/build/shooter/CMakeFiles/shooter_generate_messages.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/NVIDIAShooter/shooter_ws/src /home/ubuntu/NVIDIAShooter/shooter_ws/src/shooter /home/ubuntu/NVIDIAShooter/shooter_ws/build /home/ubuntu/NVIDIAShooter/shooter_ws/build/shooter /home/ubuntu/NVIDIAShooter/shooter_ws/build/shooter/CMakeFiles/shooter_generate_messages.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : shooter/CMakeFiles/shooter_generate_messages.dir/depend
 

@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/shooter_ws/src/rosserial/rosserial
+# Install script for directory: /home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu/shooter_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu/NVIDIAShooter/shooter_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,6 +33,6 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial" TYPE FILE FILES "/home/ubuntu/shooter_ws/src/rosserial/rosserial/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial" TYPE FILE FILES "/home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/shooter_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/build
 
 # Utility rule file for clean_test_results_rosserial_test.
 
@@ -46,7 +46,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
 include rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/progress.make
 
 rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test:
-	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_test && /usr/bin/python /opt/ros/indigo/share/catkin/cmake/test/remove_test_results.py /home/ubuntu/shooter_ws/build/test_results/rosserial_test
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_test && /usr/bin/python /opt/ros/indigo/share/catkin/cmake/test/remove_test_results.py /home/ubuntu/NVIDIAShooter/shooter_ws/build/test_results/rosserial_test
 
 clean_test_results_rosserial_test: rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test
 clean_test_results_rosserial_test: rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/build.make
@@ -57,10 +57,10 @@ rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/build:
 .PHONY : rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/build
 
 rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/clean:
-	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_rosserial_test.dir/cmake_clean.cmake
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_rosserial_test.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/clean
 
 rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/depend:
-	cd /home/ubuntu/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/shooter_ws/src /home/ubuntu/shooter_ws/src/rosserial/rosserial_test /home/ubuntu/shooter_ws/build /home/ubuntu/shooter_ws/build/rosserial/rosserial_test /home/ubuntu/shooter_ws/build/rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/NVIDIAShooter/shooter_ws/src /home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_test /home/ubuntu/NVIDIAShooter/shooter_ws/build /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_test /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_test/CMakeFiles/clean_test_results_rosserial_test.dir/depend
 

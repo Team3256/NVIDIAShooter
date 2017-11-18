@@ -20,9 +20,6 @@ def arcadeDrive(throttle,turn):
 	right = right*0.5
 	return left,right
 
-old_lshoot = False
-old_rshoot = False
-
 def callback(data):
 	global old_lreload
 	global old_rreload
@@ -35,8 +32,8 @@ def callback(data):
 	global old_rshoot
 	lshoot = 1 if float(data.axes[8]) > 0.5 else 0
 	rshoot = 1 if float(data.axes[9]) > 0.5 else 0
-	lshoot = lshoot and not old_lshoot
-	rshoot = rshoot and not old_rshoot
+	lshoot = lshoot and not old_lshoot and not curr_lshoot
+	rshoot = rshoot and not old_rshoot and not curr_rshoot
 	
 	lbumper = int(data.buttons[10])
 	rbumper = int(data.buttons[11])

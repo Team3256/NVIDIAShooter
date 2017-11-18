@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/shooter_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/build
 
 # Utility rule file for run_tests_rosserial_client_gtest_subscriber_test.
 
@@ -46,7 +46,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
 include rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/progress.make
 
 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test:
-	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_client && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/catkin/cmake/test/run_tests.py /home/ubuntu/shooter_ws/build/test_results/rosserial_client/gtest-subscriber_test.xml /home/ubuntu/shooter_ws/devel/lib/rosserial_client/subscriber_test\ --gtest_output=xml:/home/ubuntu/shooter_ws/build/test_results/rosserial_client/gtest-subscriber_test.xml
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_client && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/catkin/cmake/test/run_tests.py /home/ubuntu/NVIDIAShooter/shooter_ws/build/test_results/rosserial_client/gtest-subscriber_test.xml /home/ubuntu/NVIDIAShooter/shooter_ws/devel/lib/rosserial_client/subscriber_test\ --gtest_output=xml:/home/ubuntu/NVIDIAShooter/shooter_ws/build/test_results/rosserial_client/gtest-subscriber_test.xml
 
 run_tests_rosserial_client_gtest_subscriber_test: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test
 run_tests_rosserial_client_gtest_subscriber_test: rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/build.make
@@ -57,10 +57,10 @@ rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscribe
 .PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/build
 
 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/clean:
-	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/cmake_clean.cmake
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/clean
 
 rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/depend:
-	cd /home/ubuntu/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/shooter_ws/src /home/ubuntu/shooter_ws/src/rosserial/rosserial_client /home/ubuntu/shooter_ws/build /home/ubuntu/shooter_ws/build/rosserial/rosserial_client /home/ubuntu/shooter_ws/build/rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/NVIDIAShooter/shooter_ws/src /home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_client /home/ubuntu/NVIDIAShooter/shooter_ws/build /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_client /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_client/CMakeFiles/run_tests_rosserial_client_gtest_subscriber_test.dir/depend
 

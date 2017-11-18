@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/rosserial_arduino_generate_messages_cpp"
-  "/home/ubuntu/shooter_ws/devel/include/rosserial_arduino/Adc.h"
-  "/home/ubuntu/shooter_ws/devel/include/rosserial_arduino/Test.h"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/include/rosserial_arduino/Adc.h"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/include/rosserial_arduino/Test.h"
 )
 
 # Per-language clean rules from dependency scanning.

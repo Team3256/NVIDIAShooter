@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/ubuntu/shooter_ws/devel/setup.sh
+    local-name: /home/ubuntu/NVIDIAShooter/shooter_ws/devel/setup.sh

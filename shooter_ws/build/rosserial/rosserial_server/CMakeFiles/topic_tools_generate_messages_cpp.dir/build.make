@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/shooter_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/shooter_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/NVIDIAShooter/shooter_ws/build
 
 # Utility rule file for topic_tools_generate_messages_cpp.
 
@@ -56,10 +56,10 @@ rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/buil
 .PHONY : rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
 
 rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/clean:
-	cd /home/ubuntu/shooter_ws/build/rosserial/rosserial_server && $(CMAKE_COMMAND) -P CMakeFiles/topic_tools_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_server && $(CMAKE_COMMAND) -P CMakeFiles/topic_tools_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/clean
 
 rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/depend:
-	cd /home/ubuntu/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/shooter_ws/src /home/ubuntu/shooter_ws/src/rosserial/rosserial_server /home/ubuntu/shooter_ws/build /home/ubuntu/shooter_ws/build/rosserial/rosserial_server /home/ubuntu/shooter_ws/build/rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/NVIDIAShooter/shooter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/NVIDIAShooter/shooter_ws/src /home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_server /home/ubuntu/NVIDIAShooter/shooter_ws/build /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_server /home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_server/CMakeFiles/topic_tools_generate_messages_cpp.dir/depend
 

@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/float64_test.dir/test/float64_test.cpp.o"
-  "/home/ubuntu/shooter_ws/devel/lib/rosserial_client/float64_test.pdb"
-  "/home/ubuntu/shooter_ws/devel/lib/rosserial_client/float64_test"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/lib/rosserial_client/float64_test.pdb"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/lib/rosserial_client/float64_test"
 )
 
 # Per-language clean rules from dependency scanning.

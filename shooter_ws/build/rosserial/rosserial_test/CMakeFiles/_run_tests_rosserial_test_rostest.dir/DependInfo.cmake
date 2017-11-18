@@ -16,10 +16,10 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_test/include"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_test/include"
   "rosserial/rosserial_test/include"
-  "/home/ubuntu/shooter_ws/devel/include"
-  "/home/ubuntu/shooter_ws/src/rosserial/rosserial_server/include"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/include"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_server/include"
   "/opt/ros/indigo/include"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

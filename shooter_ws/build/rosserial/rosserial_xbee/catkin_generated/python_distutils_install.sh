@@ -14,20 +14,20 @@ fi
 
 echo_and_run() { echo "+ $@" ; "$@" ; }
 
-echo_and_run cd "/home/ubuntu/shooter_ws/src/rosserial/rosserial_xbee"
+echo_and_run cd "/home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_xbee"
 
 # snsure that Python install destination exists
-echo_and_run mkdir -p "$DESTDIR/home/ubuntu/shooter_ws/install/lib/python2.7/dist-packages"
+echo_and_run mkdir -p "$DESTDIR/home/ubuntu/NVIDIAShooter/shooter_ws/install/lib/python2.7/dist-packages"
 
 # Note that PYTHONPATH is pulled from the environment to support installing
 # into one location when some dependencies were installed in another
 # location, #123.
 echo_and_run /usr/bin/env \
-    PYTHONPATH="/home/ubuntu/shooter_ws/install/lib/python2.7/dist-packages:/home/ubuntu/shooter_ws/build/lib/python2.7/dist-packages:$PYTHONPATH" \
-    CATKIN_BINARY_DIR="/home/ubuntu/shooter_ws/build" \
+    PYTHONPATH="/home/ubuntu/NVIDIAShooter/shooter_ws/install/lib/python2.7/dist-packages:/home/ubuntu/NVIDIAShooter/shooter_ws/build/lib/python2.7/dist-packages:$PYTHONPATH" \
+    CATKIN_BINARY_DIR="/home/ubuntu/NVIDIAShooter/shooter_ws/build" \
     "/usr/bin/python" \
-    "/home/ubuntu/shooter_ws/src/rosserial/rosserial_xbee/setup.py" \
-    build --build-base "/home/ubuntu/shooter_ws/build/rosserial/rosserial_xbee" \
+    "/home/ubuntu/NVIDIAShooter/shooter_ws/src/rosserial/rosserial_xbee/setup.py" \
+    build --build-base "/home/ubuntu/NVIDIAShooter/shooter_ws/build/rosserial/rosserial_xbee" \
     install \
     $DESTDIR_ARG \
-    --install-layout=deb --prefix="/home/ubuntu/shooter_ws/install" --install-scripts="/home/ubuntu/shooter_ws/install/bin"
+    --install-layout=deb --prefix="/home/ubuntu/NVIDIAShooter/shooter_ws/install" --install-scripts="/home/ubuntu/NVIDIAShooter/shooter_ws/install/bin"

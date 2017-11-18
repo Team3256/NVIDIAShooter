@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/subscriber_test.dir/test/subscriber_test.cpp.o"
-  "/home/ubuntu/shooter_ws/devel/lib/rosserial_client/subscriber_test.pdb"
-  "/home/ubuntu/shooter_ws/devel/lib/rosserial_client/subscriber_test"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/lib/rosserial_client/subscriber_test.pdb"
+  "/home/ubuntu/NVIDIAShooter/shooter_ws/devel/lib/rosserial_client/subscriber_test"
 )
 
 # Per-language clean rules from dependency scanning.
