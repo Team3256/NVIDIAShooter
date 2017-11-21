@@ -9,11 +9,7 @@ from the jetson and run the electronics.
 #include <std_msgs/String.h>
 #include <std_msgs/Float32.h>
 
-#define LED 13
-
-#define LEFT_SHOOT_PIN 52
-#define RIGHT_SHOOT_PIN 53
-
+//define relay pins
 #define LEFT_POP_FORWARD 28
 #define LEFT_POP_REVERSE 26 
 #define RIGHT_POP_FORWARD 24
@@ -27,21 +23,24 @@ from the jetson and run the electronics.
 #define LEFT_SHOOT 30
 #define RIGHT_SHOOT 31
 
+//define motor pins
 #define LEFT_FRONT_PIN 2
 #define LEFT_BACK_PIN 3
 #define RIGHT_FRONT_PIN 4
 #define RIGHT_BACK_PIN 5
 #define PIVOT_PIN 10
 
-//TODO: ASSIGN PORT NUMBERS
+//define sensor pins
 #define HALL_EFFECT 20
 #define ENCODER_A 18 
 #define ENCODER_B 19
 
+//define PWM frequencies for motor controllers
 #define TALON_CENTER_PULSE_US 1500
 #define TALON_MIN_PULSE_US 1000
 #define TALON_MAX_PULSE_US 2000
 
+//assign variables
 #define PIVOT_ENCODER_BACK_LIMIT -80000 
 #define PIVOT_ENCODER_FORWARD_LIMIT 5000
 
@@ -62,14 +61,25 @@ Servo pivot;
 NodeHandle nh;
 
 std_msgs::Float32MultiArray sensorVals;
-std_msgs::Float32 debug_msg;
+std_msgs::String debug_msg;
 ros::Publisher pub("sensors",&sensorVals);
 ros::Publisher debug("debug", &debug_msg);
 
+int pivotTarget = 0;
+float pivot_power = 0.25;
+float motor_power = 0;
 bool is_left_reloading = false;
 bool is_right_reloading = false;
 long pivotPos = -999;
 bool is_calibrated = false;
+
+enum pivotState{
+	manual,
+	autoMoving,
+	reloading,
+	still
+};
+pivotState mstate = pivotState::manual;
 
 void run_motor(Servo motor, double power){
 	power *= 100;
@@ -142,14 +152,14 @@ float update_preset(double target, double current){
 		power = 0.0;
 	} 
 	else if (error < 0){
-		power = -0.2;
+		power = -1 * pivot_power;
 	}
 	else {
-		power = 0.2;
+		power = pivot_power;
 	}
-	debug_msg.data = power;
-	debug.publish(&debug_msg);
-	run_motor(pivot, power);
+	//debug_msg.data = power;
+	//debug.publish(&debug_msg);
+	return power;
 }
 
 void controls_callback(const std_msgs::Float32MultiArray& data){
@@ -164,24 +174,66 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	bool left_preset = data.data[8] != 0; 
 	bool right_preset = data.data[9] != 0;
 
-	
-
 	//run drive
 	run_motor(left_front, left_drive);	
 	run_motor(left_back, left_drive);
 	run_motor(right_front, -right_drive);
 	run_motor(right_back, -right_drive);
 
-	float pivot_power = 0.25;
 	//shoot
 	if (left_shoot){
-		shoot_left(60);
+		shoot_left(30);
 	}
 	if (right_shoot){
-		shoot_right(60);
+		shoot_right(30);
 	}
 //--------------
 
+	//update pivot state
+	if (pivot_forward || pivot_backward){
+		mstate = pivotState::manual;
+	}else if (left_preset || right_preset){
+		mstate = pivotState::autoMoving;
+		//set a variable for what position to move to
+	}else if(left_reload || right_reload){
+		mstate = pivotState::reloading;
+	}else{
+		mstate = pivotState::still;
+	}
+
+	//switch case for pivot state
+	switch(mstate){
+		case manual:
+			debug_msg.data = "manual";
+			motor_power = pivot_power;
+			motor_power = pivot_backward ? motor_power*-1 : motor_power;
+			mstate = pivotState::still;
+			break;
+		case autoMoving:
+			debug_msg.data = "autoMoving";
+			motor_power = update_preset(pivotTarget, pivotPos);
+			if (!is_calibrated){
+				motor_power = 0;
+			}
+			mstate = pivotState::still;
+			break;
+		case reloading:
+			debug_msg.data = "reloading";
+			motor_power = update_preset(0, pivotPos);
+			if (!is_calibrated){
+				motor_power = 0;
+			}
+			mstate = pivotState::still;
+			break;
+		case still:
+			debug_msg.data = "still";
+			motor_power = 0;
+			break;
+	}
+	run_motor(pivot, motor_power);
+	debug.publish(&debug_msg);
+
+/*
 	//we hit front limit
 	if (hall_effect() || (is_calibrated && pivotPos > PIVOT_ENCODER_FORWARD_LIMIT)){
 		pivot_power = min(pivot_power, 0);	
@@ -190,7 +242,7 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	else if (pivotPos < PIVOT_ENCODER_BACK_LIMIT){
 		pivot_power = max(pivot_power, 0);
 	}
-	/
+	
 	pivot_power = pivot_backward ? pivot_power*-1 : pivot_power;
 	if (pivot_forward || pivot_backward){
 		run_motor(pivot, pivot_power);
@@ -198,7 +250,6 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	else {
 		run_motor(pivot, 0);
 	}
-	/*
 	else{
 		if (is_calibrated){
 			if (left_preset){
@@ -215,7 +266,7 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 			}
 		}
 	}
-	*/
+*/
 	
 		//automatic reloading
 	if (left_reload && !is_left_reloading){
@@ -254,7 +305,6 @@ void setup(){
 	pivot.attach(PIVOT_PIN);
 	
 	sensorVals.data[1] = pivotPos;	
-	pinMode(LED, OUTPUT);
 	pinMode(HALL_EFFECT, INPUT);
 
 	pinMode(LEFT_POP_FORWARD, OUTPUT);
