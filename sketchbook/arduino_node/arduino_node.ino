@@ -1,6 +1,11 @@
-/* This is the node on the arduino that will recieve values
-from the jetson and run the electronics.
+/* 
+This is the node on the arduino that will recieve values from the jetson and run the electronics.
+TODO:
+1. Add limits on pivot
+2. Add auto moving to position on pivot
+3. Implement full move to flat, reload, and move back to current position
 */
+
 #include <Servo.h>
 #include <Encoder.h>
 
@@ -48,31 +53,36 @@ from the jetson and run the electronics.
 #define PRESET_HIGH -60000
 #define PRESET_TOLERANCE 3000
 
+//Define ROS Stuff
+//Sensors topic is for sensor feedback (not being subscribed to because all control is handled on Arduino to avoid lag between joystick, Jetson, and Arduino)
+//Debug topic is used to get feedback from Arduino without serial monitor)
 using namespace ros;
+NodeHandle nh;
+std_msgs::Float32MultiArray sensorVals;
+std_msgs::String debug_msg;
+ros::Publisher pub("sensors",&sensorVals);
+ros::Publisher debug("debug", &debug_msg);
 
-Encoder pivotEnc(ENCODER_A, ENCODER_B);
-
+//Define Motors
 Servo left_front;
 Servo left_back;
 Servo right_front;
 Servo right_back;
 Servo pivot;
 
-NodeHandle nh;
+//Define Sensors (Hall Effect is defined in Setup)
+Encoder pivotEnc(ENCODER_A, ENCODER_B);
 
-std_msgs::Float32MultiArray sensorVals;
-std_msgs::String debug_msg;
-ros::Publisher pub("sensors",&sensorVals);
-ros::Publisher debug("debug", &debug_msg);
-
+//Define variables
 int pivotTarget = 0;
 float pivot_power = 0.25;
 float motor_power = 0;
+long pivotPos = -999;
 bool is_left_reloading = false;
 bool is_right_reloading = false;
-long pivotPos = -999;
 bool is_calibrated = false;
 
+//Define states for the pivot
 enum pivotState{
 	manual,
 	autoMoving,
@@ -81,6 +91,7 @@ enum pivotState{
 };
 pivotState mstate = pivotState::manual;
 
+//method to control motor controllers at the desired frequencies
 void run_motor(Servo motor, double power){
 	power *= 100;
 	int pulse_us = TALON_CENTER_PULSE_US + (5*power);
@@ -89,6 +100,14 @@ void run_motor(Servo motor, double power){
 	motor.writeMicroseconds(pulse_us); 
 }
 
+/*
+Set of methods for controlling the 4 actuators for reloading and the 2 electronic solenoids for shooting
+Pop pops the barrel forward to let the canister drop down
+Push pushes the barrel in on the canister for shooting
+Eject ejects the empty canisters when the barrel is popped out
+Retract retracts the actuator after the barrel is ejected
+Shoot opens and closes the electronic solenoids for a short time to release air to shoot the TShirt
+*/
 void pop_left(){
 	digitalWrite(LEFT_POP_FORWARD, HIGH);	
 	digitalWrite(LEFT_POP_REVERSE, LOW);
@@ -139,12 +158,14 @@ void shoot_left(int wait){
 	digitalWrite(LEFT_SHOOT, HIGH);
 } 
 
+//Get hall_effect position
 bool hall_effect(){
 	bool val = !digitalRead(HALL_EFFECT);
 	if (val) is_calibrated = true;
 	return val;
 }
 
+//Used to move pivot to a preset position (not being used)
 float update_preset(double target, double current){
 	double error = target - current;
 	double power = 0.0;
@@ -162,7 +183,9 @@ float update_preset(double target, double current){
 	return power;
 }
 
+//Called everytime the subscriber reads from the controls topic
 void controls_callback(const std_msgs::Float32MultiArray& data){
+	//Controller values
 	float left_drive = data.data[0];
 	float right_drive = data.data[1];
 	bool left_shoot = data.data[2] != 0;
@@ -174,20 +197,19 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	bool left_preset = data.data[8] != 0; 
 	bool right_preset = data.data[9] != 0;
 
-	//run drive
+	//run drive with joysticks (Arcade drive is handled on Jetson side)
 	run_motor(left_front, left_drive);	
 	run_motor(left_back, left_drive);
 	run_motor(right_front, -right_drive);
 	run_motor(right_back, -right_drive);
 
-	//shoot
+	//shoot on triggers
 	if (left_shoot){
 		shoot_left(30);
 	}
 	if (right_shoot){
 		shoot_right(30);
 	}
-//--------------
 
 	//update pivot state
 	if (pivot_forward || pivot_backward){
@@ -201,7 +223,10 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 		mstate = pivotState::still;
 	}
 
-	//switch case for pivot state
+	//switch case for pivot state (reloading and automoving state aren't doing anything)
+	//Hard limits haven't been set
+	//Reloading should be split into two states: Reloading and moving to reload
+	//After reloading, call autoMoving to move back to past position
 	switch(mstate){
 		case manual:
 			debug_msg.data = "manual";
@@ -230,10 +255,13 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 			motor_power = 0;
 			break;
 	}
+	//run motor based off switch case
 	run_motor(pivot, motor_power);
 	debug.publish(&debug_msg);
 
-/*
+	//Old automoving method with too many safety features because the pivot is dangerous
+	//Need to merged into switch case
+	/*
 	//we hit front limit
 	if (hall_effect() || (is_calibrated && pivotPos > PIVOT_ENCODER_FORWARD_LIMIT)){
 		pivot_power = min(pivot_power, 0);	
@@ -266,9 +294,10 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 			}
 		}
 	}
-*/
+	*/
 	
-		//automatic reloading
+	//Automatic Reloading Sequence (run on button pressed not held because that will cause issues interrupting the sequence)
+	//Should be implemented into the pivot states
 	if (left_reload && !is_left_reloading){
 		is_left_reloading = true;
 		pop_left();	
@@ -280,7 +309,6 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 		push_left();
 		is_left_reloading = false;
 	}
-	
 	if (right_reload && !is_right_reloading){
 		is_right_reloading = true;
 		pop_right();	
@@ -294,10 +322,11 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	}
 }
 
+//Subscribe to controls topic
 Subscriber<std_msgs::Float32MultiArray> sub("controls", &controls_callback);
 
 void setup(){
-
+	//Attach motors
 	left_front.attach(LEFT_FRONT_PIN);
 	left_back.attach(LEFT_BACK_PIN);
 	right_front.attach(RIGHT_FRONT_PIN);
@@ -306,7 +335,8 @@ void setup(){
 	
 	sensorVals.data[1] = pivotPos;	
 	pinMode(HALL_EFFECT, INPUT);
-
+	
+	//Define 6 solenoids (the 4 solenoids on the manifold are dual-channeled)
 	pinMode(LEFT_POP_FORWARD, OUTPUT);
 	pinMode(LEFT_POP_REVERSE, OUTPUT);
 	pinMode(RIGHT_POP_FORWARD, OUTPUT);
@@ -320,18 +350,20 @@ void setup(){
 	pinMode(LEFT_SHOOT, OUTPUT);
 	pinMode(RIGHT_SHOOT, OUTPUT);
 	
-	//close electronic solenoids
+	//close electronic solenoids when initializing
 	digitalWrite(LEFT_SHOOT, HIGH);
 	digitalWrite(RIGHT_SHOOT, HIGH);
 
-	// set barrel and ejectors to default(shooting) position
+	// set barrel and ejectors to reloading positions when initializing
 	retract_left();
 	retract_right();
 	pop_left();
 	pop_right();
-
+	
+	//Explicitly set the length of the ROS msg (Probably has something to do with converting with limitless python arrays)
 	sensorVals.data_length = 2;
 
+	//ROS Initialization Stuff
 	nh.initNode();
 	nh.advertise(pub);
 	nh.advertise(debug);
@@ -340,7 +372,7 @@ void setup(){
 }
 
 void loop(){
-	//Update 
+	//Update encoder
 	pivotPos = pivotEnc.read();
 
 	//update sensor topic
