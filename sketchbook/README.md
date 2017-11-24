@@ -1,7 +1,7 @@
 # Arduino Sketchbook
 
-### `Arduino_node` folder contains the actual code.
-### `Build_to_arduino` script is used to upload the code the the Arduino.
+### `arduino_node` folder contains the actual code.
+### `build_to_arduino` script is used to build and upload code to the Arduino.
   - Run `./build_to_arduino.sh` (set for Arduino MEGA; change board architecture and name for other Arduino boards)
   - [Tutorial](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc)
 ### `Libraries`
