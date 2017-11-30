@@ -42,8 +42,7 @@ TODO:
 
 //define PWM frequencies for motor controllers
 #define TALON_CENTER_PULSE_US 1500
-#define TALON_MIN_PULSE_US 1000
-#define TALON_MAX_PULSE_US 2000
+#define TALON_MIN_PULSE_US 1000 #define TALON_MAX_PULSE_US 2000
 
 //assign variables
 #define PIVOT_ENCODER_BACK_LIMIT -75000 
@@ -228,6 +227,14 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	//Reloading should be split into two states: Reloading and moving to reload
 	//After reloading, call autoMoving to move back to past position
 	switch(mstate){
+		//we hit front limit
+		if (is_calibrated && pivotPos > PIVOT_ENCODER_FORWARD_LIMIT){
+			pivot_power = min(pivot_power, 0);	
+		}
+		//we hit back limit
+		else if (is_calibrated && pivotPos < PIVOT_ENCODER_BACK_LIMIT){
+			pivot_power = max(pivot_power, 0);
+		}
 		case manual:
 			//debug_msg.data = "manual";
 			motor_power = pivot_power;
