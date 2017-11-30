@@ -42,11 +42,10 @@ TODO:
 
 //define PWM frequencies for motor controllers
 #define TALON_CENTER_PULSE_US 1500
-#define TALON_MIN_PULSE_US 1000
-#define TALON_MAX_PULSE_US 2000
+#define TALON_MIN_PULSE_US 1000 #define TALON_MAX_PULSE_US 2000
 
 //assign variables
-#define PIVOT_ENCODER_BACK_LIMIT -80000 
+#define PIVOT_ENCODER_BACK_LIMIT -75000 
 #define PIVOT_ENCODER_FORWARD_LIMIT 5000
 
 #define PRESET_LOW -10000
@@ -228,14 +227,22 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	//Reloading should be split into two states: Reloading and moving to reload
 	//After reloading, call autoMoving to move back to past position
 	switch(mstate){
+		//we hit front limit
+		if (is_calibrated && pivotPos > PIVOT_ENCODER_FORWARD_LIMIT){
+			pivot_power = min(pivot_power, 0);	
+		}
+		//we hit back limit
+		else if (is_calibrated && pivotPos < PIVOT_ENCODER_BACK_LIMIT){
+			pivot_power = max(pivot_power, 0);
+		}
 		case manual:
-			debug_msg.data = "manual";
+			//debug_msg.data = "manual";
 			motor_power = pivot_power;
 			motor_power = pivot_backward ? motor_power*-1 : motor_power;
 			mstate = pivotState::still;
 			break;
 		case autoMoving:
-			debug_msg.data = "autoMoving";
+			//debug_msg.data = "autoMoving";
 			motor_power = update_preset(pivotTarget, pivotPos);
 			if (!is_calibrated){
 				motor_power = 0;
@@ -243,7 +250,7 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 			mstate = pivotState::still;
 			break;
 		case reloading:
-			debug_msg.data = "reloading";
+			//debug_msg.data = "reloading";
 			motor_power = update_preset(0, pivotPos);
 			if (!is_calibrated){
 				motor_power = 0;
@@ -251,7 +258,7 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 			mstate = pivotState::still;
 			break;
 		case still:
-			debug_msg.data = "still";
+			//debug_msg.data = "still";
 			motor_power = 0;
 			break;
 	}
@@ -262,35 +269,17 @@ void controls_callback(const std_msgs::Float32MultiArray& data){
 	//Old automoving method with too many safety features because the pivot is dangerous
 	//Need to merged into switch case
 	/*
-	//we hit front limit
-	if (hall_effect() || (is_calibrated && pivotPos > PIVOT_ENCODER_FORWARD_LIMIT)){
-		pivot_power = min(pivot_power, 0);	
-	}
-	//we hit back limit
-	else if (pivotPos < PIVOT_ENCODER_BACK_LIMIT){
-		pivot_power = max(pivot_power, 0);
-	}
-	
-	pivot_power = pivot_backward ? pivot_power*-1 : pivot_power;
-	if (pivot_forward || pivot_backward){
-		run_motor(pivot, pivot_power);
-	} 
-	else {
-		run_motor(pivot, 0);
-	}
-	else{
-		if (is_calibrated){
-			if (left_preset){
-				update_preset(-5000, pivotPos); 
-			}
-			else{
-				pivot_power = pivot_backward ? pivot_power*-1 : pivot_power;
-				if (pivot_forward || pivot_backward){
-					run_motor(pivot, pivot_power);
-				} 
-				else {
-					run_motor(pivot, 0);
-				}
+	if (is_calibrated){
+		if (left_preset){
+			update_preset(-5000, pivotPos); 
+		}
+		else{
+			pivot_power = pivot_backward ? pivot_power*-1 : pivot_power;
+			if (pivot_forward || pivot_backward){
+				run_motor(pivot, pivot_power);
+			} 
+			else {
+				run_motor(pivot, 0);
 			}
 		}
 	}
